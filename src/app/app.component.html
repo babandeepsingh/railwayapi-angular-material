@@ -1,0 +1,25 @@
+<div class="example-container">
+	<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <a routerLink="/home">
+       <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        <span>Home</span>
+      </a>
+    </button>
+    <button mat-menu-item>
+      <a routerLink="/about">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">more</mat-icon>
+        About
+      </a>
+    </button>
+    <button mat-menu-item>
+      <a routerLink="/info">
+       <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+        <span>Info</span>
+      </a>
+    </button>
+    </mat-menu>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,21 @@
+.example-form {
+  display:flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+}
+
+.text-center{
+  text-align: center;
+}
+.data-table{
+  width: 80%;
+  margin: 20px auto;
+}
+.middle{
+  width: 80%;
+  margin: 20px auto;
+}
+.middle1{
+  margin: 20px auto;
+}

@@ -1,0 +1,66 @@
+<div class="example-container container">
+	<form (submit)="onSubmit(f)" #f="ngForm" class="example-form">
+		<mat-form-field class="example-full-width">
+			<input matInput (input)="onKey($event)" name="src" placeholder="Please enter the source station code" ngModel #name="ngModel" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input (input)="onKey($event)" matInput name="des"  placeholder="Please enter the destination station code" ngModel #name="ngModel" [matAutocomplete]="auto1">
+            <mat-autocomplete #auto1="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+        </mat-form-field>
+        <div class="alert alert-danger" role="alert" *ngIf="name.touched && !name.valid">Enter the Train Number</div>
+
+        <mat-form-field>
+            <input matInput name="date" [matDatepicker]="picker" placeholder="Choose a date" ngModel #name="ngModel">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+
+        </mat-form-field>
+        <div class="example-button-row">
+            <button type="submit" mat-flat-button color="primary">Search</button>
+        </div>
+    </form>
+</div>
+
+<div class="middle" *ngIf="showSpinner">
+    <mat-spinner class="middle1"></mat-spinner>
+</div>
+
+<div class="mat-elevation-z8 data-table" *ngIf="visible">
+    <mat-table #table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="number">
+            <mat-header-cell *matHeaderCellDef> Number </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.number}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="src_departure_time">
+            <mat-header-cell *matHeaderCellDef> D.Time </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.src_departure_time}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="dest_arrival_time">
+            <mat-header-cell *matHeaderCellDef> A.Time </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.dest_arrival_time}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>
+<br>
+<br>
